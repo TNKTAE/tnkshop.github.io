@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ร้านค้า | ขายไอเท็มเกม</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #0f172a;
+      color: white;
+      animation: fadeIn 0.8s ease;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    header {
+      background: #1e293b;
+      padding: 15px 30px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+    }
+    .logo {
+      font-size: 24px;
+      color: #60a5fa;
+      font-weight: bold;
+    }
+    nav a {
+      margin: 0 12px;
+      color: white;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    nav a:hover {
+      color: #3b82f6;
+    }
+    .menu {
+      display: none;
+      background: #1e293b;
+      padding: 10px;
+      position: absolute;
+      top: 60px;
+      right: 30px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+      width: 220px;
+      opacity: 0;
+      transition: opacity 0.5s ease, transform 0.3s ease;
+      transform: translateY(-20px);
+    }
+    .menu.show {
+      display: block;
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .menu a {
+      display: block;
+      margin: 10px 0;
+    }
+    .menu a:hover {
+      color: #3b82f6;
+    }
+    .menu .profile {
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+    .menu .profile img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      margin-right: 10px;
+    }
+    .menu .profile span {
+      color: #93c5fd;
+      font-weight: bold;
+    }
+    .menu-btn {
+      background: #2563eb;
+      color: white;
+      padding: 8px 16px;
+      border-radius: 8px;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
+    .menu-btn:hover {
+      background: #3b82f6;
+      transform: scale(1.05);
+    }
+    .container {
+      padding: 30px;
+      max-width: 1200px;
+      margin: auto;
+    }
+    .section-title {
+      font-size: 28px;
+      margin-bottom: 20px;
+      color: #93c5fd;
+    }
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 20px;
+    }
+    .product {
+      background: #1e293b;
+      padding: 15px;
+      border-radius: 12px;
+      transition: transform 0.2s, box-shadow 0.3s;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    }
+    .product:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.5);
+    }
+    .product img {
+      width: 100%;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+    .product h3 {
+      margin: 0 0 5px;
+    }
+    .product p {
+      margin: 0 0 10px;
+      color: #cbd5e1;
+    }
+    .btn {
+      display: inline-block;
+      background: #2563eb;
+      color: white;
+      padding: 8px 16px;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: background 0.3s, transform 0.2s;
+    }
+    .btn:hover {
+      background: #3b82f6;
+      transform: scale(1.05);
+    }
+    .scrolling-image {
+      position: fixed;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      animation: scrollUp 10s linear infinite;
+    }
+    @keyframes scrollUp {
+      0% {
+        top: 100%;
+      }
+      100% {
+        top: -100px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <img src="set.png" alt="Scrolling Image" class="scrolling-image">
+
+  <header>
+    <div class="logo">GameShop</div>
+    <nav>
+      <a href="#" class="menu-btn" onclick="toggleMenu()">เมนู</a>
+    </nav>
+  </header>
+
+  <!-- Menu Dropdown -->
+  <div class="menu" id="menu">
+    <div class="profile">
+      <img src="https://via.placeholder.com/40" alt="โปรไฟล์">
+      <span id="username">ชื่อผู้ใช้</span>
+    </div>
+    <a href="profile.html">โปรไฟล์</a>
+    <a href="login.html">ออกจากระบบ</a>
+    <a href="index.html">หน้าแรก</a>
+    <a href="gacha.html">กาชา</a>
+    <a href="shop.html">ร้านค้า</a>
+    <a href="topup.html">เติมเงิน</a>
+    <a href="storng.html" id="adminBtn" style="display: none; color: #38bdf8;">เครดิต (แอดมิน)</a>
+  </div>
+
+  <div class="container">
+    <div class="section-title">สินค้าแนะนำ</div>
+    <div class="products">
+      <div class="product">
+        <img src="https://via.placeholder.com/200x140?text=Free+Fire+Skin" alt="item">
+        <h3>สกินปืน Free Fire</h3>
+        <p>เริ่มต้นที่ 99 บาท</p>
+        <a class="btn" href="#">สั่งซื้อ</a>
+      </div>
+      <div class="product">
+        <img src="https://via.placeholder.com/200x140?text=Robux" alt="item">
+        <h3>Robux 100</h3>
+        <p>ราคา 35 บาท</p>
+        <a class="btn" href="#">สั่งซื้อ</a>
+      </div>
+      <div class="product">
+        <img src="https://via.placeholder.com/200x140?text=Blox+Fruits" alt="item">
+        <h3>Blox Fruits ผลปีศาจ</h3>
+        <p>เริ่มต้นที่ 79 บาท</p>
+        <a class="btn" href="#">สั่งซื้อ</a>
+      </div>
+      <div class="product">
+        <img src="https://via.placeholder.com/200x140?text=Steam+Wallet" alt="item">
+        <h3>Steam Wallet</h3>
+        <p>เริ่มต้นที่ 50 บาท</p>
+        <a class="btn" href="#">สั่งซื้อ</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById('menu');
+      menu.classList.toggle('show');
+    }
+
+    // จำลองการเข้าสู่ระบบ
+    const username = 'ADMIN TAETNK';
+    const password = 'tae082009';
+
+    // แสดงชื่อผู้ใช้
+    document.getElementById('username').innerText = username;
+
+    // ถ้าเป็นแอดมินให้แสดงปุ่ม admin
+    if (username === 'ADMIN TAETNK' && password === 'tae082009') {
+      document.getElementById('adminBtn').style.display = 'block';
+    }
+  </script>
+</body>
+</html>
